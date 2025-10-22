@@ -1,4 +1,5 @@
 import gmpy2
+import os
 
 def isPrime(n):
     return gmpy2.is_prime(n)
@@ -9,17 +10,20 @@ def text_to_number(text):
 M = input("Mensagem a encriptar: ")
 M = text_to_number(M)
 
-with open("Publica.txt", "r") as f:
-    chaves = f.read()
-chaves = chaves.strip()
-chaves = chaves.split(',')
-n = int(chaves[0])
-e = int(chaves[1])
+if os.path.exists("Publica.txt"):
+    with open("Publica.txt", "r") as f:
+        chaves = f.read()
+    chaves = chaves.strip()
+    chaves = chaves.split(',')
+    n = int(chaves[0])
+    e = int(chaves[1])
 
-if isPrime(n) and isPrime(e):
-    print("Atenção: as chaves providas são invalidas e o resultado obtido não será correto.")
+    if isPrime(n) and isPrime(e):
+        print("Atenção: as chaves providas são invalidas e o resultado obtido não será correto.")
 
-# encriptar
-C = pow(M, e, n)
-print(f'Mensagem criptografada: {C}')
+    # encriptar
+    C = pow(M, e, n)
+    print(f'Mensagem criptografada: {C}')
+else:
+    print("Chaves não foram encontradas.")
 input()

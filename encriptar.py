@@ -1,11 +1,7 @@
-def isPrime(prime):
-    if prime < 2:
-        return False
-    
-    for i in range(2, int(prime**0.5) + 1):
-        if prime % i == 0:
-            return False
-    return True
+import gmpy2
+
+def isPrime(n):
+    return gmpy2.is_prime(n)
 
 def text_to_number(text):
     return int(''.join(f"{ord(char):03d}" for char in text))
@@ -26,3 +22,4 @@ if isPrime(n) and isPrime(e):
 # encriptar
 C = pow(M, e, n)
 print(f'Mensagem criptografada: {C}')
+input()

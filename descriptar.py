@@ -1,11 +1,7 @@
-def isPrime(prime):
-    if prime < 2:
-        return False
-    
-    for i in range(2, int(prime**0.5) + 1):
-        if prime % i == 0:
-            return False
-    return True
+import gmpy2
+
+def isPrime(n):
+    return gmpy2.is_prime(n)
 
 def number_to_text(number):
     text = str(number)
@@ -30,3 +26,4 @@ if isPrime(n) and isPrime(d):
 M = pow(C, d, n)
 M = number_to_text(M)
 print(f'Mensagem descriptografada: {M}') 
+input()
